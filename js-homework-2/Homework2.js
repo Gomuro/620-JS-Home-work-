@@ -129,78 +129,18 @@ if (hours >= 5 &&hours <11 ){
 
 // method 2
 
-switch (hours) {
-    case  0:
-       alert("Доброї ночі");
+switch (true) {
+    case hours == 23 || hours >=0 && hours < 5:
+        alert("Доброї ночі");
         break;
-    case  1:
-       alert("Доброї ночі");
+    case hours >= 5 &&hours <11:
+        alert("Доброго ранку");
         break;
-    case  2:
-       alert("Доброї ночі");
+    case hours >= 11 && hours < 17:
+        alert("Доброго дня"); 
         break;
-    case  3:
-       alert("Доброї ночі");
-        break;
-    case  4:
-       alert("Доброї ночі");
-        break;
-    case  5:
-       alert("Доброго ранку");
-        break;
-    case  6:
-       alert("Доброго ранку");
-        break;
-    case  7:
-       alert("Доброго ранку");
-        break;    
-    case  8:
-       alert("Доброго ранку");
-        break;
-    case  9:
-       alert("Доброго ранку");
-        break;
-    case  10:
-       alert("Доброго ранку");
-        break;
-    case  11:
-       alert("Доброго дня");
-        break;
-    case  12:
-       alert("Доброго дня");
-        break;  
-    case  13:
-       alert("Доброго дня");
-        break;
-    case  14:
-       alert("Доброго дня");
-        break;
-    case  15:
-       alert("Доброго дня");
-        break;
-    case  16:
-       alert("Доброго дня");
-        break;        
-    case  17:
-       alert("Доброго вечора");
-        break;
-    case  18:
-       alert("Доброго вечора");
-        break;
-    case  19:
-       alert("Доброго вечора");
-        break;
-    case  20:
-       alert("Доброго вечора");
-        break;
-    case  21:
-       alert("Доброго вечора");
-        break;
-    case  22:
-       alert("Доброго вечора");
-        break;
-    case  23:
-       alert("Доброї ночі");
+    case hours >= 17 && hours < 23:
+        alert("Доброго вечора");
         break;
 }
 
