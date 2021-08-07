@@ -29,7 +29,7 @@ let k = [];
 
 function randArray (n) {
     for (let i = 0; i < n; i++) {
-         let a = Math.floor(Math.random() * 9);
+         let a = Math.floor(Math.random() * 500);
     k.push(a);
     document.write( '<br>' + k)
     }
