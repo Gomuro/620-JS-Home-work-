@@ -30,11 +30,10 @@ let k = [];
 function randArray (n) {
     for (let i = 0; i < n; i++) {
          let a = Math.floor(Math.random() * 500);
-    k.push(a);
-    document.write( '<br>' + k)
+     k.push(a);
     }
-   ;
-
+   
+    document.write( '<br>' + k)
 }
 
 let l = prompt("Enter length array.")
@@ -84,24 +83,16 @@ function findMin(){
 findMin(11 , 44 , 10);
 
 //task6
-let arr =[ 1, 2, 3, 3];
 
 // let chekDublicate =[... new Set(arr)];
 //     console.log(chekDublicate);
 
 
 function findUnique(arr){ 
-    arr.forEach( (element,index) => { 
-        for ( let i = index + 1, n = arr.length ; i < n ; i++ ) { 
-            if (element == arr[i]){ 
-                return console.log(false, "- Завдання 6"); 
-            } 
-        } 
-    }); 
-    return console.log(true, "- Завдання 6"); 
+    return (new Set(arr)).size == arr.length; 
 } 
-findUnique([1, 2, 3, 5, 3]);  // => false 
-findUnique([1, 2, 3, 5, 11]); // => true
+console.log(findUnique([1, 2, 3, 5, 3]));   // => false 
+console.log(findUnique([1, 2, 3, 5, 11])); // => true
 
 
  
