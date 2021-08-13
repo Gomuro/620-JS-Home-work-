@@ -71,18 +71,64 @@ try {
 
 //task4
 
+
+// function showUser(id){
+//     if(id < 0){
+//         throw new Error("It is not positive number");
+//     }else{
+//         let userId ={
+//             id: id,
+//         }
+//         return userId;
+//     }
+// }
+// console.log(showUser(5));
+
+
+
+// function showUsers(ids) {
+//     for(let x=0; x<ids.length; x++) {
+//         if (ids[x] < 0) {
+//             let err1 = new Error("ID must not be negative: " + ids[x]);
+//             ids.splice(x, x);
+//             console.log(err1.message);
+//         }
+//     }
+    
+//     ids.unshift("");
+//     return console.log(ids.join(" id: "));
+// }
+// try {
+//     let idUser = showUsers([7, -12, 44, 22]);
+// } catch (error) {
+//     console.log(error.message);
+// }
+
+
+
+
+
+
+
+
+
 function showUser(id) {
-    if (id<=0) {
-         throw new Error(": ID must not be negative:"+id);
-    }
     return { id: id };
 }
 const ids = [];
 const users = [];
 function showUsers(ids) {
     for (i = 0; i < ids.length; i++){
-    users.push(showUser(ids[i]));
+        
+    if (ids[i] < 0) {
+        let err1 = new Error("ID must not be negative: " + ids[i]);
+        console.log(err1)
+        ids.splice(i, i);
     }
+    users.push(showUser(ids[i]));
+    
+    }
+    console.log(users)
 }
 try {
     showUsers([7, -12, 44, 22]);
