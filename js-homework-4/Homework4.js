@@ -112,24 +112,26 @@ try {
 
 
 
-function showUser(id) {
-    return { id: id };
-}
-const ids = [];
-const users = [];
-function showUsers(ids) {
-    for (i = 0; i < ids.length; i++){
-        
-    if (ids[i] < 0) {
-        let err1 = new Error("ID must not be negative: " + ids[i]);
-        console.log(err1)
-        ids.splice(i, i);
-    }
-    users.push(showUser(ids[i]));
-    
-    }
-    console.log(users)
-}
+function showUser(id) { 
+    if (id <= 0) { 
+        throw new Error(": ID must not be negative:" + id); 
+    } 
+    return { 
+         id 
+    }; 
+   } 
+
+function showUsers(ids) { 
+    const users = []; 
+    for (i = 0; i < ids.length; i++) { 
+        try { 
+            users.push(showUser(ids[i])); 
+        } catch (e) { 
+            console.log(e.message) 
+        } 
+    } 
+    return console.log(users); 
+} 
 try {
     showUsers([7, -12, 44, 22]);
 } catch (exception) {
