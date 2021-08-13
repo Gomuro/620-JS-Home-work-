@@ -71,35 +71,22 @@ try {
 
 //task4
 
-
-function showUser(id){
-    if(id < 0){
-        throw new Error("It is not positive number");
-    }else{
-        let userId ={
-            id: id,
-        }
-        return userId;
+function showUser(id) {
+    if (id<=0) {
+         throw new Error(": ID must not be negative:"+id);
     }
+    return { id: id };
 }
-console.log(showUser(5));
-
-
-
+const ids = [];
+const users = [];
 function showUsers(ids) {
-    for(let x=0; x<ids.length; x++) {
-        if (ids[x] < 0) {
-            let err1 = new Error("ID must not be negative: " + ids[x]);
-            ids.splice(x, x);
-            console.log(err1.message);
-        }
+    for (i = 0; i < ids.length; i++){
+    users.push(showUser(ids[i]));
     }
-    console.log();
-    return console.log(ids);
 }
 try {
-    let idUser = showUsers([7, -12, 44, 22]);
-    console.log(idUser);
-} catch (error) {
-    console.log(error.message);
+    showUsers([23, 33, 44, -22, 3]);
+} catch (exception) {
+    console.log(exception.name + exception.message);
+    console.log(users);
 }
