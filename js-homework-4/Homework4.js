@@ -66,20 +66,8 @@ try {
 }
 
 
-
-
-
-<<<<<<< HEAD
-
-
-
-
-
-
-
-=======
 //task4
->>>>>>> 912e183127e8a77a18155cfdea4b93bfca3f34cb
+
 
 
 function showUser(id) { 
