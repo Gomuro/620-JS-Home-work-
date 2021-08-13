@@ -85,7 +85,7 @@ function showUsers(ids) {
     }
 }
 try {
-    showUsers([23, 33, 44, -22, 3]);
+    showUsers([7, -12, 44, 22]);
 } catch (exception) {
     console.log(exception.name + exception.message);
     console.log(users);
