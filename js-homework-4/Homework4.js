@@ -69,40 +69,6 @@ try {
 
 
 
-//task4
-
-
-// function showUser(id){
-//     if(id < 0){
-//         throw new Error("It is not positive number");
-//     }else{
-//         let userId ={
-//             id: id,
-//         }
-//         return userId;
-//     }
-// }
-// console.log(showUser(5));
-
-
-
-// function showUsers(ids) {
-//     for(let x=0; x<ids.length; x++) {
-//         if (ids[x] < 0) {
-//             let err1 = new Error("ID must not be negative: " + ids[x]);
-//             ids.splice(x, x);
-//             console.log(err1.message);
-//         }
-//     }
-    
-//     ids.unshift("");
-//     return console.log(ids.join(" id: "));
-// }
-// try {
-//     let idUser = showUsers([7, -12, 44, 22]);
-// } catch (error) {
-//     console.log(error.message);
-// }
 
 
 
