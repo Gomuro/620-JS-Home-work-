@@ -13,20 +13,20 @@ try {
     let rect = calcRectangleArea(width , height);
     console.log(rect); 
 } catch (error) {
-    console.log(error)
+    console.log(error);
 }
 // task2
 let age = prompt("Enter your age: ");
 
-age = +age;
+age = +age; // <-------------------
 function checkAge(age) {
     
-    if (age === "") {
-        throw new Error("The field is empty! Please enter your age.")
+    if (age === ""|| age ===0) {
+        throw new Error("The field is empty! Please enter your age.");
     }else if (typeof age !== "number" || isNaN(age)) {
         throw new Error("Error Enter number.");
     }else if (age < 14) {
-        throw new Error("You are to young.")
+        throw new Error("You are to young.");
     }
     return age;
 }
@@ -85,7 +85,7 @@ function showUsers(ids) {
         try { 
             users.push(showUser(ids[i])); 
         } catch (e) { 
-            console.log(e.message) 
+            console.log(e.message); 
         } 
     } 
     return console.log(users); 
