@@ -18,12 +18,12 @@ try {
 // task2
 let age = prompt("Enter your age: ");
 
-age = +age; // <-------------------
+
 function checkAge(age) {
     
-    if (age === ""|| age ===0) {
+    if (age.trim() == "") {
         throw new Error("The field is empty! Please enter your age.");
-    }else if (typeof age !== "number" || isNaN(age)) {
+    }else if (isNaN(parseInt(age))) {
         throw new Error("Error Enter number.");
     }else if (age < 14) {
         throw new Error("You are to young.");
@@ -60,7 +60,7 @@ function showMonthName(month){
 }
 
 try {
-    console.log(showMonthName(15));
+    console.log(showMonthName(5));
 } catch (error) {
     console.log(error.name + ": " + error.message);
 }
