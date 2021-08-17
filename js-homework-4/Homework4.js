@@ -38,17 +38,17 @@ try {
     alert(error.message);
 }
 //task3
-
-function showMonthName(month){
-    month -= 1; 
-    let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
-    class MonthException{
+class MonthException{
         constructor(message){
             this.MonthException = message;
             
         }
     }
+function showMonthName(month){
+    month -= 1; 
+    let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+    
     
     let whatMonth = new MonthException("Incorrect month number");
     if (months[month] != null) {
