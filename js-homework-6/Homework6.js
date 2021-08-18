@@ -8,7 +8,7 @@ document.querySelector(".image").src = "cat.jpg";
 const image = document.querySelector('.image');
 const exampleAttr= image.getAttribute('class');
 const attr= image.getAttribute('src');
-//alert(`class ${exampleAttr} src ${attr}`);
+alert(`class ${exampleAttr} src ${attr}`);
 //Task 3
 
     
@@ -33,7 +33,7 @@ function methodOne(){
     console.log(modalNumber);
 }
 
-//methodOne();
+methodOne();
 
 
 function methodTwo() {
@@ -49,7 +49,7 @@ function methodTwo() {
         alert(numberList[i].innerHTML);
     }
 }
-//methodTwo();
+methodTwo();
 
 //Task 5
 
