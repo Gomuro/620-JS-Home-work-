@@ -30,7 +30,6 @@ function methodOne(){
     for(let i = 0; i < numberList.length; i++){
         alert(modalNumber[i]);
     }
-    console.log(modalNumber);
 }
 
 methodOne();
@@ -71,10 +70,17 @@ let makeHorizontal = document.querySelectorAll("#myList li");
 //Task 6
 
 let text1 = prompt("textOne", "Please enter your text");
-document.getElementById("input1").setAttribute("value", text1);
-
 let text2 = prompt("textTwo", "Please enter your text");
-document.getElementById("input2").setAttribute("value", text2);
+
+let tmp = text1;
+text1 = text2;
+text2 = tmp;
+
+
+let input1 = document.getElementById("input1").setAttribute("value", text1);
+let input2 = document.getElementById("input2").setAttribute("value", text2);
+
+
 //Task 7
 
 let newMain = document.createElement("main");
