@@ -108,11 +108,12 @@ function AddOptions(option) {
     let newOption = new Option(option,'Option Value');
     cities.appendChild(newOption);
 } 
+
 function changeOptions(){} {
     let country = document.getElementById("country");
     let cities = document.getElementById("cities");
     let pElem = document.getElementsByTagName("p")[1];
-    let lo;let hi; 
+    
     
     country.addEventListener("change",() => {
         for (var i = 0; i < country.length; i++){
@@ -156,19 +157,63 @@ function changeOptions(){} {
         
     });
     cities.addEventListener("change",() => {
-        for ( let i = 0; i <cities.length; i++){
+        for (var i = 0; i < country.length; i++){
             
-            if (cities.options[1].selected){
-                pElem.innerHTML = ` City: ${cities.options[1].innerHTML}`;
+            if (country.options[0].selected) {
+               
+                for ( let i = 0; i <cities.length; i++){
+            
+                    if (cities.options[1].selected){
+                        pElem.innerHTML = `Country: ${country.options[0].innerHTML} City: ${cities.options[1].innerHTML}`;
+                        break;
+                    }else if (cities.options[2].selected){
+                        pElem.innerHTML = `Country: ${country.options[0].innerHTML} City: ${cities.options[2].innerHTML}`;
+                        break;
+                    }else if (cities.options[3].selected){
+                        pElem.innerHTML = `Country: ${country.options[0].innerHTML} City: ${cities.options[3].innerHTML}`;
+                        break;
+                    }      
+                }
                 break;
-            }else if (cities.options[2].selected){
-                pElem.innerHTML = ` City: ${cities.options[2].innerHTML}`;
+            }else if (country.options[1].selected){
+                
+                
+                for ( let i = 0; i <cities.length; i++){
+            
+                    if (cities.options[1].selected){
+                        pElem.innerHTML = `Country: ${country.options[1].innerHTML} City: ${cities.options[1].innerHTML}`;
+                        break;
+                    }else if (cities.options[2].selected){
+                        pElem.innerHTML = `Country: ${country.options[1].innerHTML} City: ${cities.options[2].innerHTML}`;
+                        break;
+                    }else if (cities.options[3].selected){
+                        pElem.innerHTML = `Country: ${country.options[1].innerHTML} City: ${cities.options[3].innerHTML}`;
+                        break;
+                    }      
+                }
                 break;
-            }else if (cities.options[3].selected){
-                pElem.innerHTML = ` City: ${cities.options[3].innerHTML}`;
+            }else if (country.options[2].selected){
+                
+                
+                for ( let i = 0; i <cities.options.length; i++){
+            
+                    if (cities.options[1].selected){
+                        pElem.innerHTML = `Country: ${country.options[2].innerHTML} City: ${cities.options[1].innerHTML}`;
+                        break;
+                    }else if (cities.options[2].selected){
+                        pElem.innerHTML = `Country: ${country.options[2].innerHTML} City: ${cities.options[2].innerHTML}`;
+                        break;
+                    }else if (cities.options[3].selected){
+                        pElem.innerHTML = `Country: ${country.options[2].innerHTML} City: ${cities.options[3].innerHTML}`;
+                        break;
+                    }      
+                }  
                 break;
-            }      
-        }
+            }
+            
+            }
+            
+        
     })
     
 }
