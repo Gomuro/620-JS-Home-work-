@@ -62,7 +62,7 @@ checkEmail('my_ma--il@gmail.com');
 function checkLogin(login) {
     const re = /\w+\d\.\d\w{2,10}/
     const renumbers = /(\d\.\d|\d)/g
-    const floatingNumber =/^[+-]?\d+(\.\d+)?$/
+    
 
     console.log(re.test(login));
     console.log(login.match(renumbers))
