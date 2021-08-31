@@ -9,9 +9,9 @@ let tagDiv1 = document.body.children[7];
 $(tag1).before(tagDiv1);
 
 let tag2 = document.body.children[8];
-tag2.classList.add('h3Second');
+
 let tagDiv2 = document.body.children[9];
-$('h3.h3Second').before(tagDiv2);
+$(tag2).before(tagDiv2);
 // task4
 $('.inputs input:checkbox').click(() => { 
     let lengthEl = $('.inputs input:checkbox:checked').length;
