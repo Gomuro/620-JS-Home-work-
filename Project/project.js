@@ -230,7 +230,7 @@ function ActiveBlocks(){
     
     
     
-    let addToggleCofeblock = new ToggleButton(Cofeblock);
+    
     let addToggleSecurityblock = new ToggleButton(Securityblock);
     let addToggleWiFiblock = new ToggleButton(WiFiblock);
     let addToggleGarageblock = new ToggleButton(Garageblock);
@@ -239,6 +239,7 @@ function ActiveBlocks(){
     function ActiveTVBlock() {
         let addToggleTVblock = new ToggleButton(TVblock, "toggleButtonTV");
         let addTextOnOffTVBlock = new addToBlockText(TVblock,"TextInBlock","On/Off Tv");
+        let addTextChangeChanal = new addToBlockText(TVblock,"Change","Change Chanal");
         
         let buttonLeft = document.createElement('button');
         let buttonRight = document.createElement('button');
@@ -250,6 +251,7 @@ function ActiveBlocks(){
         let volumeSlider = new addToBlockSlider(TVblock,"volumeSlider","Volume", "0", "100");
         document.querySelector('.volumeSlider').style.visibility="hidden";
         document.querySelector('.VolumeText').style.visibility="hidden";
+        document.querySelector('.Change').style.visibility="hidden";
 
         let TVToggleButton = document.querySelector(".toggleButtonTV")
         TVToggleButton.addEventListener("click", () => {
@@ -257,12 +259,14 @@ function ActiveBlocks(){
                 TVblock.append(buttonLeft, buttonRight); 
                 document.querySelector('.volumeSlider').style.visibility = "unset";
                 document.querySelector('.VolumeText').style.visibility = "unset";
+                document.querySelector('.Change').style.visibility = "unset";
                 
             }else{
                 let removeButtonLeft = new DeleteButton(buttonLeft);
                 let removeButtonRight = new DeleteButton(buttonRight);
                 document.querySelector('.volumeSlider').style.visibility = "hidden";
                 document.querySelector('.VolumeText').style.visibility = "hidden";
+                document.querySelector('.Change').style.visibility = "hidden";
             }
         })
     }
@@ -311,21 +315,98 @@ function ActiveBlocks(){
 
     function ActiveLightBlock(){
         let ToggleLight = new ToggleButton(Lightblock,'toggleButtonLight');
-        let addTextOnOffVentBlock = new addToBlockText(Lightblock,"TextInBlock","On/Off Light");
+        let addTextOnOffLightBlock = new addToBlockText(Lightblock,"TextInBlock","On/Off Light");
         let addLightSlider = new addToBlockSlider(Lightblock,"LightSlider","Light", "0", "100");
         let LightToggle = document.querySelector('.toggleButtonLight');
         document.querySelector('.LightSlider').style.visibility = "hidden";
+        let lightSlider = document.querySelector('.LightSlider');
+        let addTextnumber = new addToBlockText(Lightblock,"NumberText",`${lightSlider.value}%`);
+        let Textnumber = document.querySelector('.NumberText');
+        document.querySelector('.NumberText').style.visibility = "hidden";
+
+        lightSlider.addEventListener("input", () => {
+            Textnumber.innerHTML = `${lightSlider.value}%`;
+        })
         LightToggle.addEventListener("click", () =>{
             if (LightToggle.classList.contains("toggleActive")) {
                 document.querySelector('.LightSlider').style.visibility = "unset";
+                document.querySelector('.NumberText').style.visibility = "unset";
             } else {
                 document.querySelector('.LightSlider').style.visibility = "hidden";
+                document.querySelector('.NumberText').style.visibility = "hidden";
             }        
         });
     }
     ActiveLightBlock();
+    function ActiveCofeBlock() {
+        Cofeblock.innerHTML = `
+        <button class="toggleButtonCofe"></button>
+        <p class="TextInBlock delete">On/Off Cofe</p>
+        <p class="TextInBlock question">What do you want?</p>
+        <ul class="cofeul">
+            
+            <li class="Cofeli">Американо</li>
+            <li class="Cofeli">Еспресо</li>
+            <li class="Cofeli">Капучіно</li>
+            <li class="Cofeli">Лате</li>
+        </ul>
+        
+        `;
+        let toggleButton = document.querySelector(".toggleButtonCofe")
+        document.querySelector('.cofeul').style.visibility = 'hidden';
+        document.querySelector('.question').style.visibility = 'hidden';
+        // document.querySelector('.countdown').style.visibility = 'hidden';
+        function StartTimer(){
+            const startingMinutes = 1;
+            let time =startingMinutes * 60;
 
-
+            let timer = document.createElement('p');
+            timer.className = 'countdown'
+            Cofeblock.appendChild(timer);
+            const countdownEl = document.querySelector('.countdown');
+            toggleButton.remove();
+            let text_in_block = document.querySelector(".delete");
+            text_in_block.remove();
+            let timerdo = setInterval(() => {
+                const minutes = Math.floor(time / 60);
+                let seconds = time % 60;
+                seconds = seconds < 10 ? "0"+ seconds : seconds;
+                let Time = `${minutes} : ${seconds}`;
+                console.log(Time);
+                countdownEl.innerHTML = time;
+                time--;
+                if (Time === "0 : 00") {
+                    clearInterval(timerdo);
+                    countdownEl.innerHTML = "DONE";
+                    // setTimeout(() =>{
+                    //     countdownEl.remove();
+                    // },2000);
+                    
+                }
+            },1000);
+           
+        }
+        
+        
+        toggleButton.addEventListener("click",() => {
+            toggleButton.classList.toggle("toggleActive");
+            if (toggleButton.classList.contains("toggleActive")) {
+                document.querySelector('.cofeul').style.visibility = 'unset';
+                document.querySelector('.question').style.visibility = 'unset';
+            } else {
+                document.querySelector('.cofeul').style.visibility = 'hidden';
+                document.querySelector('.question').style.visibility = 'hidden';
+                remove.StartTimer();
+            } 
+        });
+        
+        document.querySelector('.cofeul').addEventListener('click',() => {
+            document.querySelector('.cofeul').style.visibility = 'hidden';
+            document.querySelector('.question').style.visibility = 'hidden';
+            StartTimer();
+        });
+    }
+    ActiveCofeBlock();
 
 
 
