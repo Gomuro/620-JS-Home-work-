@@ -355,7 +355,7 @@ function ActiveBlocks(){
         let toggleButton = document.querySelector(".toggleButtonCofe")
         document.querySelector('.cofeul').style.visibility = 'hidden';
         document.querySelector('.question').style.visibility = 'hidden';
-        // document.querySelector('.countdown').style.visibility = 'hidden';
+        
         function StartTimer(){
             const startingMinutes = 1;
             let time =startingMinutes * 60;
@@ -378,9 +378,7 @@ function ActiveBlocks(){
                 if (Time === "0 : 00") {
                     clearInterval(timerdo);
                     countdownEl.innerHTML = "DONE";
-                    // setTimeout(() =>{
-                    //     countdownEl.remove();
-                    // },2000);
+                    
                     
                 }
             },1000);
