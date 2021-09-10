@@ -132,6 +132,15 @@ class addToBlockSlider {
         whatDiv.appendChild(input);
     }
 }
+class password {
+    #password = "753951456";
+    get getPassword() {
+        return this.#password;
+    }
+    set setPassword(value){
+        this.#password = value;
+    }
+}
 
 
 
@@ -231,7 +240,7 @@ function ActiveBlocks(){
     
     
     
-    let addToggleSecurityblock = new ToggleButton(Securityblock);
+    
     let addToggleWiFiblock = new ToggleButton(WiFiblock);
     let addToggleGarageblock = new ToggleButton(Garageblock);
     let addToggleWaterSupplyblock = new ToggleButton(WaterSupplyblock);
@@ -289,12 +298,12 @@ function ActiveBlocks(){
         let temperatur = new addToBlockText(Ventblock,"TextTemperature",`${temperature} °C`);  
         buttonLeft.addEventListener("click", () => {
             temperature += 1;
-            let textTemp = document.querySelector('.TextTemperature')
+            let textTemp = document.querySelector('.TextTemperature');
             textTemp.innerHTML = `${temperature} °C`;
         });  
         buttonRight.addEventListener("click", () => {
             temperature -= 1;
-            let textTemp = document.querySelector('.TextTemperature')
+            let textTemp = document.querySelector('.TextTemperature');
             textTemp.innerHTML = `${temperature} °C`;
         }); 
            
@@ -352,7 +361,7 @@ function ActiveBlocks(){
         </ul>
         
         `;
-        let toggleButton = document.querySelector(".toggleButtonCofe")
+        let toggleButton = document.querySelector(".toggleButtonCofe");
         document.querySelector('.cofeul').style.visibility = 'hidden';
         document.querySelector('.question').style.visibility = 'hidden';
         
@@ -406,8 +415,124 @@ function ActiveBlocks(){
     }
     ActiveCofeBlock();
 
+    function activeSecurityBlock() {
+        Securityblock.innerHTML = `
+        <button class='toggleButtonSecurity'></button>
+        <p class="TextInBlock alarmText">On/Off alarm</p>
+        <input type="password" class="pass"/>
+        <p class="TextInBlockAndUnderContent">Enter password</p>
+        `;
+        let toggleButton = document.querySelector(".toggleButtonSecurity");
+        let pass = document.querySelector('.pass');
+        let alarmText = document.querySelector(".alarmText");
+        document.querySelector('.pass').style.visibility ='hidden';
+        document.querySelector('.TextInBlockAndUnderContent').style.visibility ='hidden';
+        toggleButton.addEventListener("click",() => {
+            toggleButton.remove();
+            alarmText.remove();
+            document.querySelector('.pass').style.visibility ='unset';
+            pass.style.marginTop ='40px';
+            document.querySelector('.TextInBlockAndUnderContent').style.visibility ='unset';
+            pass.addEventListener("input",() =>{
+                if (pass.value =="123456") {
+                    document.querySelector('.pass').style.visibility ='hidden';
+                    document.querySelector('.TextInBlockAndUnderContent').style.visibility ='hidden';
+                    if (toggleButton.classList.contains("toggleActive")) {
+                        toggleButton.classList.toggle("toggleActive");
+                        let sycuritydone = document.createElement("p");
+                        sycuritydone.className="countdown";
+                        sycuritydone.innerHTML =`Alarm Be OFF`
+                        Securityblock.appendChild(sycuritydone)
+                        setTimeout(() =>{
+                            sycuritydone.remove();
+                            document.querySelector('.pass').style.visibility ='unset';
+                            document.querySelector('.TextInBlockAndUnderContent').style.visibility ='unset';
+                        }, 2000)
+                    }else{
+                            toggleButton.classList.toggle("toggleActive");
+                            let sycuritydone = document.createElement("p");
+                            sycuritydone.className="countdown";
+                            sycuritydone.innerHTML =`Alarm Be ON`
+                            Securityblock.appendChild(sycuritydone)
+                            setTimeout(() =>{
+                            sycuritydone.remove();
+                            document.querySelector('.pass').style.visibility ='unset';
+                            document.querySelector('.TextInBlockAndUnderContent').style.visibility ='unset';
+                        }, 2000);
+                    }
+                    
+                } else {
+                    console.log("PassBad")
+                } 
+            });
+        });
+    }
+    activeSecurityBlock();
 
+    function activeWifiBlock() {
+        WiFiblock.innerHTML =`
+        <button class='toggleButtonWifi'></button>
+        <p class="TextInBlock wifiText">On/Off WIFI</p>
+        <input type="password" class="wifiPass"/>
+        <p class="TextInBlockAndUnderContent Wifitext">Enter password</p>
+        `;
+        let toggleButton = document.querySelector(".toggleButtonWifi");
+        let pass = document.querySelector('.wifiPass');
+        let wifiText = document.querySelector('.wifiText');
+        document.querySelector('.wifiPass').style.visibility ='hidden';
+        document.querySelector('.Wifitext').style.visibility ='hidden';
 
+        toggleButton.addEventListener('click', () => {
+            toggleButton.remove();
+            wifiText.remove();
+            document.querySelector('.wifiPass').style.visibility ='unset';
+            pass.style.marginTop ='40px';
+            document.querySelector('.Wifitext').style.visibility ='unset';
+            pass.addEventListener("input",() =>{
+                let passwd = new password().getPassword;
+                console.log(passwd);
+                if (pass.value == passwd) {
+                    if (toggleButton.classList.contains("toggleActive")) {
+                        document.querySelector('.wifiPass').style.visibility ='hidden';
+                        document.querySelector('.Wifitext').style.visibility ='hidden';
+                        toggleButton.classList.toggle("toggleActive");
+                        let wifiON = document.createElement("p");
+                        wifiON.className="countdown";
+                        wifiON.innerHTML =`WIFI Be OFF`;
+                        WiFiblock.appendChild(wifiON);
+                        setTimeout(() =>{
+                            wifiON.remove();
+                            document.querySelector('.wifiPass').style.visibility ='unset';
+                            document.querySelector('.Wifitext').style.visibility ='unset';
+                        }, 2000);
+                    }else{
+                        document.querySelector('.wifiPass').style.visibility ='hidden';
+                        document.querySelector('.Wifitext').style.visibility ='hidden';
+                        toggleButton.classList.toggle("toggleActive");
+                        let wifiON = document.createElement("p");
+                        wifiON.className="countdown";
+                        wifiON.innerHTML =`WIFI Be ON`;
+                        WiFiblock.appendChild(wifiON);
+                        setTimeout(() =>{
+                            wifiON.remove();
+                            document.querySelector('.wifiPass').style.visibility ='unset';
+                            document.querySelector('.Wifitext').style.visibility ='unset';
+                        }, 2000);
+                    }
+                    
+                }
+            });     
+        });
+    }
+    activeWifiBlock();
+    function activeGarageblock() {
+        Garageblock.innerHTML =`
+        <button class='toggleButtonGarage'></button>
+        <p class="TextInBlock GarageText">Open/Close Garage Door</p>
+        <p class="TextInBlockAndUnderContent Garagetext">0</p>
+        `;
+    }
+    activeGarageblock();
 }
 
 ActiveBlocks();
