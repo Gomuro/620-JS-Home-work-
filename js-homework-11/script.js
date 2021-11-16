@@ -17,7 +17,7 @@ http.createServer(function (request, response) {
   // <p>System file name: ${path.basename(__filename)}</p>
   // `);
 // ************************ Task 2 ****************************************
-  // response.end(sayHello(userName));
+  response.end(sayHello(userName));
 }).listen(8000);
 
 console.log('Server running at http://127.0.0.1:8000/');
